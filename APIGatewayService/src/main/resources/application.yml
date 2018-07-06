@@ -1,0 +1,19 @@
+# Configure this Discovery Server
+eureka:
+  instance:
+    hostname: localhost
+  client: 
+    registerWithEureka: false
+    fetchRegistry: false
+
+# HTTP (Tomcat) port
+server:
+  port: 1111   
+zuul:
+  routes:
+    MSFour:
+      url=http://localhost:8084
+ribbon:
+  eureka:
+    enabled=false
+

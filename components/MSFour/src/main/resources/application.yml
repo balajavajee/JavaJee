@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: MSFour
+server:
+  port: 8084
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:1112/eureka}

@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: MSThree
+server:
+  port: 8083
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:1112/eureka}

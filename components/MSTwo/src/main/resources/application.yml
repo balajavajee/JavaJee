@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: MSTwo
+server:
+  port: 8082
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:1112/eureka}

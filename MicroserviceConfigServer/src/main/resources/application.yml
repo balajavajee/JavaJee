@@ -1,0 +1,8 @@
+# HTTP (Tomcat) port
+server:
+  port: 1113
+spring:
+  cloud:
+    config:
+      server:
+        searchLocations: file://${user.home}/MicroService/centralProperties/
