@@ -13,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-
 @RefreshScope
 @EnableDiscoveryClient
 @EnableFeignClients
@@ -24,7 +23,7 @@ public class MsFourApplication {
 	@Autowired
 	private static DiscoveryClient discoveryClient;
 	@Autowired
-	private MSFiveServiceProxy feignGreetingsClient;
+	private MSFiveServiceProxy msFiveServiceProxy;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MsFourApplication.class, args);
@@ -32,9 +31,14 @@ public class MsFourApplication {
 	}
 
 	@RequestMapping("/greetingFromMSFour")
-    public String greeting() {
-        return "Greetings from MSFour applications!";
-    }
+	public String greeting() {
+		return "Greetings from MSFour applications!";
+	}
+
+	@RequestMapping("/greetingFromMSFive")
+	public String greetingFromMSFive() {
+		return msFiveServiceProxy.greetingFromMSFive();
+	}
 
 	@Bean
 	@LoadBalanced

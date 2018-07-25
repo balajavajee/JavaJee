@@ -26,6 +26,8 @@ public class MsFiveApplication {
 
 	@Autowired
 	private DiscoveryClient discoveryClient;
+	@Autowired
+	private MSOneServiceProxy msOneServiceProxy;
 
 	public static void main(String[] args) {
 		SpringApplication.run(MsFiveApplication.class, args);
@@ -40,6 +42,11 @@ public class MsFiveApplication {
     public String greeting() {
         return "Greetings from MSFive applications!";
     }
+	
+	@RequestMapping("/greetingFromMSOne")
+	public String greetingFromMSOne() {
+		return msOneServiceProxy.greetingFromMSOne();
+	}
 
 	@Bean
 	@LoadBalanced

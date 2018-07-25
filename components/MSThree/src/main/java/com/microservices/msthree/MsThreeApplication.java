@@ -1,5 +1,6 @@
 package com.microservices.msthree;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
@@ -18,6 +19,9 @@ import org.springframework.web.client.RestTemplate;
 @RestController
 public class MsThreeApplication {
 
+	@Autowired
+	private MSFourServiceProxy msFourServiceProxy;
+	
 	public static void main(String[] args) {
 		SpringApplication.run(MsThreeApplication.class, args);
 	}
@@ -25,6 +29,11 @@ public class MsThreeApplication {
     public String greeting() {
         return "Greetings from MSThree applications!";
     }
+
+	@RequestMapping("/greetingFromMSFour")
+	public String greetingFromMSFour() {
+		return msFourServiceProxy.greetingFromMSFour();
+	}
 
 	@Bean
 	@LoadBalanced

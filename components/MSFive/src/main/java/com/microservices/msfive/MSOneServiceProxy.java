@@ -7,6 +7,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @FeignClient(name ="MSOne")
 @RibbonClient("MSOne")
 public interface MSOneServiceProxy {
-		@RequestMapping("/greeting")
-		String greeting();
+		@RequestMapping("/greetingFromMSOne")
+		String greetingFromMSOne();
 }

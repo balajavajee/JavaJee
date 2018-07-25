@@ -7,3 +7,12 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:1112/eureka}
+      
+#mongodb
+#spring.data.mongodb.host=localhost
+#spring.data.mongodb.port=27017
+#spring.data.mongodb.database=app1
+
+#logging
+#logging.level.org.springframework.data=debug
+#logging.level.=error

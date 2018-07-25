@@ -8,5 +8,5 @@ import org.springframework.web.bind.annotation.RequestMapping;
 @RibbonClient("MSFive")
 public interface MSFiveServiceProxy {
 		@RequestMapping("/greetingFromMSFive")
-		String greeting();
+		String greetingFromMSFive();
 }

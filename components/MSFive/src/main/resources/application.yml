@@ -10,4 +10,5 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:1112/eureka}
-      
+##spring.data.mongodb.database: my-db-engine
+spring.data.mongodb.uri: mongodb://127.0.0.1:27017/test

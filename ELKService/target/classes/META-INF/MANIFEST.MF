@@ -1,0 +1,10 @@
+Manifest-Version: 1.0
+Implementation-Title: ELKService
+Implementation-Version: 0.0.1-SNAPSHOT
+Built-By: BRDD
+Implementation-Vendor-Id: com.microservices.elk
+Build-Jdk: 1.8.0_121
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-bo
+ ot-starter-parent/ELKService
+Created-By: Maven Integration for Eclipse
+
