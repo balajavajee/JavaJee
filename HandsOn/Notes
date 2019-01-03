@@ -1,0 +1,86 @@
+Eclipse guideline - http://help.eclipse.org/mars/index.jsp?topic=%2Forg.eclipse.cdt.doc.user%2Freference%2Fcdt_u_c_code_style_pref.htm
+Eclipse code style - https://github.com/google/styleguide/blob/gh-pages/eclipse-java-google-style.xml
+
+https://www.baeldung.com/role-and-privilege-for-spring-security-registration
+
+
+Mongo db running:
+D:\set up\mongodb\bin>mongod.exe --dbpath "d:\set up\mongodb\data" 
+D:\set up\mongodb\bin>mongo.exe
+
+AWS
+https://www.youtube.com/watch?v=IT1X42D1KeA
+
+https://shekhargulati.com/2018/02/15/single-sign-on-in-spring-boot-applications-with-spring-security-oauth/
+
+5029336 03
+ncfm books
+Core Java:
+https://www.draw.io/
+//Microservices logging
+https://dzone.com/articles/centralized-logging
+https://dzone.com/articles/troubleshooting-microservices-with-elk-stack-or-ne?fromrel=true
+
+https://howtodoinjava.com/spring-cloud/spring-cloud-api-gateway-zuul/
+
+// All spring annotations
+https://dzone.com/articles/a-guide-to-spring-framework-annotations
+
+Top 10 tough core Java interview questions answers programming
+Read more: http://www.java67.com/2012/09/top-10-tough-core-java-interview-questions-answers.html#ixzz54bq7giKZ
+http://www.java67.com/2012/08/can-we-override-static-method-in-java.html
+http://javarevisited.blogspot.in/2011/04/top-10-java-serialization-interview.html
+http://javarevisited.blogspot.in/2010/10/what-is-deadlock-in-java-how-to-fix-it.html
+http://javarevisited.blogspot.in/2011/03/10-interview-questions-on-singleton.html
+http://javarevisited.blogspot.in/2012/03/why-character-array-is-better-than.html
+http://javarevisited.blogspot.in/2010/10/why-string-is-immutable-or-final-in-java.html
+http://javarevisited.blogspot.in/2011/08/why-java-does-not-support-operator.html
+http://javarevisited.blogspot.in/2011/07/why-multiple-inheritances-are-not.html
+http://javarevisited.blogspot.in/2011/05/wait-notify-and-notifyall-in-java.html
+
+
+Performance issues:
+
+http://www.javaworld.com/article/2071782/build-ci-sdlc/solving-common-java-ee-performance-problems.html
+
+
+Docker
+https://www.udemy.com/docker-compose-in-depth/
+file:///C:/Bala/JAVA_LC/Udemy/Docker/dockermaterial/diveintodocker/diveintodocker/notes/toc_4.html
+Angularjs
+https://angular.io/
+https://www.udemy.com/angular-2-from-theory-to-practice/
+plunkar plnkr.co HTML,Javascript - online editor
+
+Swagger2
+https://springframework.guru/spring-boot-restful-api-documentation-with-swagger-2/
+
+
+MongoDB:
+https://www.mongodb.com/
+
+Resful Webservices
+http://websystique.com/spring-boot/spring-boot-rest-api-example/
+http://websystique.com/spring-security/secure-spring-rest-api-using-oauth2/
+
+Spring cloud
+https://www.udemy.com/microservices-with-spring-cloud/
+
+Core Java:
+
+JVM Architecture (Class loader, Memary areas & Runtine Engine JRE)
+https://dzone.com/articles/jvm-architecture-explained
+Memory Architecture & Memory management
+http://www.journaldev.com/2856/java-jvm-memory-model-memory-management-in-java
+Timeout errors in application due to Major GC running dure to memory leaks
+
+Java multiprocessing/ Threading
+https://www.udemy.com/multithreading-and-parallel-computing-in-java/
+https://www.udemy.com/multithreading-java-generics-collections/
+https://www.udemy.com/efficient-java-multithreading-with-executors/
+https://www.udemy.com/java-multithreading/learn/v4/t/lecture/107238?start=0
+
+
+
+Options Expiry stat:
+https://www.stockmaniacs.net/expiry-day-nifty-option-strategy/

@@ -7,3 +7,6 @@ eureka:
   client:
     serviceUrl:
       defaultZone: ${EUREKA_URI:http://localhost:1112/eureka}
+      
+logging:
+  file: /var/log/logs/MSTwo.log

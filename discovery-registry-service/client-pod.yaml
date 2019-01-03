@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: pod
+metadata: 
+  name: client
+  labels:
+    component: web
+spec: 
+  containers:
+    - name: client
+      image: microservices/discovery
+      ports:
+        - containerPort: 1112

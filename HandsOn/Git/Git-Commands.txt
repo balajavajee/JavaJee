@@ -1,0 +1,280 @@
+Core Concept
+=========================
+The Three States
+
+#Working Tree - files you are currently working on. It is a tree because it implies the entire directory structure. Used to be called 'working directory' until git v2.9.
+#Staging Area - contains changes about what will go into the next commit. Technical name in Git is "index"
+#Repository(.git folder) - where git stores the metadata and object database for the project.
+#HEAD - This is a pointer normally points to a named branch(e.g. master). When we use a checkout command to checkout a specific commit, HEAD is in Detached state.
+
+#Tilde vs caret
+#--------------------
+HEAD ^ - first parent of HEAD. same as HEAD ^ 1. 
+HEAD ^ 2 - second parent of HEAD.
+HEAD ^ ^ - fist parent of the first parent of HEAD. Not the same as HEAD ^ 2. This is ugly, so use HEAD ~ 2. HEAD ~ 2 == HEAD ^ ^ 
+
+
+git basics
+----------------------------------------------------
+git init											# create a git repo
+git clone <repository_url> 							# Clone existing repository into a new directory
+git status											# check status
+git status -s										# check short status
+git status --short
+git add <file>										# stage a file. The file is in stage area/Index now. use '.' to stage all change
+git add *.java
+git add .
+git commit -m "message" 							# commit changes in staged area
+git push											# push current branch to remote(origin in this case) Repository
+git pull											# get latest change from remote Repository. # fetch first then merge. If conflict exist, it will abort
+													# use `git stash` to save changes, or use `git reset --hard origin/master` to abort changes # then continue with `git pull`
+git fetch											# pull is equivalent to
+git merge
+
+Config
+----------------------------------------------------#The global configuration can be manually modified in ~/.gitconfig
+
+git config --global user.name 'First Last'
+git config --global user.email 'me@company.com'
+git config --global push.default simple 			# configure 'push.default' to push only current branch to remote branch. This is prefered
+													# configure 'push.default' to push all local branches to remote branches. Do not use!
+													# git config --global push.default matching
+git config --global diff.tool gvimdiff				# set a diff tool
+
+													#Line Ending Conversions
+													#There are 3 config options regarding how git handles line ending conversions.
+
+													#Checkout Windows-style, commit Unix-style line endings. Git converts LF to CRLF when checking out text files. Recommended for windows. ("core.autocrlf" is set to "true")
+													#CHeckout as-is, commit Unix-style line endings. Recommended for Unix. ("core.autocrlf" is set to "input")
+													#Checkout as-is, commit as-is. Not recommended for cross-platform projects. ("core.autocrlf" is set to "false")
+													#if "core.autocrlf" is set to "input", a warning will be displayed when adding text files to index in Windows.
+
+													#warning: CRLF will be replaced by LF in foo.txt.
+													#The file will have its original line endings in your working directory.
+													#Set "safecrlf" to be "false" to hide the warning message. So these two commands can go together.
+git config --global core.autocrlf input
+git config --global core.safecrlf false
+
+Git checkout
+-----------------------------------------------------Most common use is to switch branch. Can also be used to revert file to a commit or restore file.
+
+git checkout <branch>								# switch branch
+git checkout master									# switch to master branch
+git checkout -b <newbranch>							# create a new branch and switch to it
+git fetch origin									# checkout a remote branch
+git checkout <remotebranch>
+git checkout master~2 Makefile   					# checkout a file out of a commit # Example to revert Makefile to two revisions back, 
+rm -f hello.c										# delete hello.c by mistake, and then restore it back from index
+git checkout hello.c  								# undo the delete by restoring hello.c
+													# 'detached HEAD' state
+													# you enter detached head state by checking out a specific commit
+													# git checkout <commit>
+													# see git checkout --help for more info about detached HEAD
+													# see https://git-scm.com/docs/git-checkout#_detached_head for the visual
+git checkout c6c8007 								# or
+git checkout master^^
+
+Back out uncommitted Changes
+----------------------------------------------------# back out all the changes since last commit, staged or not.
+
+git reset --hard
+git reset HEAD <file>...							# Unstage a file
+git checkout -- path/to/the/file.txt				# discard changes in working tree
+git reset -- <file>									# Undo delete file
+													# this restores the file status in the index
+git checkout -- <file>								# then check out a copy from the index
+
+Undo committed change
+-----------------------------------------------------
+													# replace commit with a new commit message
+													# OR make forgotten changes, stage them and commit again
+													# DO NOT use this command if you have already pushed the changes
+git commit --amend
+git reset --hard origin/master						# reset to use origin/master version
+													# DO NOT use this command if you have already pushed the changes
+
+
+Remote
+--------------------------------------------------------------------Pro Git working with Remote
+
+git remote -v														# show remote URLs
+git remote add <name> <url>											# add a remote
+
+git remote set-url <name> <newUrl>									# setting remote url to use SSH protocol
+																	# SSH protocol can save time pushing changes
+git remote set-url origin git@gitlab.com:xinghua24/GitCommands.git
+git remote show <remote>											# show remote branches
+git remote show origin
+git fetch <remote>													# fetch - only download to sync with remote, do not merge
+git fetch
+git push <remote> <branch>											# push changes in local branch to remote branch
+git push origin <branch>
+git push
+git push -u origin <branch>											# push a new branch to remote. -u is short for --set-upstream
+git push <remote> <local_branch_name>:<remote_branch_name>			# if remote branch is named differently
+git pull															# git pull = git fetch + git merge.# Better to simply use git fetch and merge explicitly
+git push <remote> --delete <branch>									# delete a remote branch
+
+Branch & Merge
+---------------------------------------------------------------------Pro Git Branch
+
+git branch															# show local branches. * points to the branch that is checked out
+git branch -a														# show local and remote branch
+git branch -m <oldname> <newname>									# rename a branch
+git branch -m <new-branch-name>										# rename current branch
+git checkout -b <branch>											# new branch. new branch name can be feature/xfeature
+git checkout <branch>												# switch branch
+git merge <branch>													# merge a branch. first checkout the branch you wish to merge into and then git merge <branch>
+																	# merge change is made to the current branch(branch to merge into). The branch from parameter is not changed.
+
+																# After seeing a conflict, you can abort the merge or resolve the conflicts.
+																# The easiest way to resolve merge conflict is edit conflict file in VSCode.
+																# Then add edited files to index, and then run git commit.
+git merge origin/master												# merge origin/master to current branch
+git merge newbranch --no-ff											# no fast-forward merge
+git merge --abort													# abort the merge due to conflict
+git branch --merged master											# show branches merged into master
+git branch --merged													# show branches merged into HEAD
+git branch --no-merged												# show branches not merged into HEAD
+git branch -d <branch>												# delete a local branch. use -D to force an unmerged delete # can't use this command delete the current branch
+git branch -D <branch>
+
+Rebase
+--------------------------------------------------------------------Pro Git Rebase
+
+git rebase <branch>													# this command only make change in the current branch. The branch from parameter is not changed
+git rebase master
+git rebase --abort													# abort the rebase
+git rebase --continue												# fix the conflict, add modified files to index, then use continue to finish rebase
+																	# do not use merge in the middle of rebase
+git pull --rebase origin master										# after 'git fetch', if 'git status' shows local branch and remote branch have diverged, then
+																	# can use 'git pull' to merge or rather use 'git pull --rebase' to rebase
+
+Diff
+--------------------------------------------------------------------- most common commands are git diff and git diff --cached
+																	#  you can use 'difftool' instead of 'diff' if 'tool.diff' is setup
+																	# diff takes two references. it can be hash, pointer(HEAD) or branch name
+																	# Changes in the working tree not yet staged for the next commit.
+git diff
+git diff -- <file>
+git diff --cached													# Changes between the index and last commit;
+																	# what you would be committing if you run "git commit" without "-a" option
+git diff --staged HEAD
+git diff --cached -- <file>
+git diff HEAD														# Changes in the working tree since last commit;
+																	# what you would be committing if you run "git commit -a"
+git diff HEAD -- <file>
+
+																	# comparing with arbitrary commits
+git diff HEAD^ HEAD 												# between before the last commit and the last commit
+git diff HEAD HEAD^ 												# between the last commit and before the last commit
+git diff 3c797b7 HEAD 												# compare using commit hash
+git diff 3c797b7 07568da
+git diff master origin/master										# Compare two branch
+
+Stash
+--------------------------------------------------------------------
+																	#Stash - Use git stash when you want to record the current state of the working tree and the index, but want to go back to a clean working tree. Ref Doc: https://git-scm.com/docs/git-stash.
+																	#One way to use Stash is to stash before running git pull command. after pull is completed, run git stash apply. this way no merge conflict will occur when pulling files from remote.
+git stash															# save a stash # uncommited work in Working directory and Staging Area are saved to stash			
+git stash save <descriptive_message>
+git stash list														# show stashes
+git stash show <stash>												# show stash change files
+git stash show stash@{0}
+git stash show -p stash@{0}											# show stash in patch form using -p option
+git stash show -p stash@{1}
+git stash apply stash@{0}											# apply stash stash@{0}. If there is conflict, edit the conflict
+git stash pop stage@{0}												# also applies stash # apply doesn't remove the stash from queue. but pop does.
+git stash drop stash@{0}											# remove a single stash from list of stash entries
+git stash clear														# remove all stash entries
+
+Subtree
+--------------------------------------------------------------------Git subtree allows one repository to exist inside the parent repository as a sub-directory. Useful for maintaining sub-project.
+
+git subtree add --prefix=path/to-repo repo-name branch				# Add subtree
+git subtree push --prefix=path/to-repo repo-name branch				# Push to subtree's repo
+git subtree pull --prefix=path/to-repo repo-name branch				# Pull changes from subtree's repo back to parent repo
+																	#The main drawback for subtree is you have to specify the directory path for every push/pull.
+.gitignore
+--------------------------------------------------------------------The rules for the patterns you can put in the .gitignore file are as follows:
+																#Blank lines or lines starting with # are ignored.
+																#Standard glob patterns work, and will be applied recursively throughout the entire working tree.
+																#You can start patterns with a forward slash (/) to avoid recursivity.
+																#You can end patterns with a forward slash (/) to specify a directory.
+																#You can negate a pattern by starting it with an exclamation point (!).
+																#Example .gitignore file:
+
+*.a																	# ignore all .a files	
+!lib.a																# but do track lib.a, even though you're ignoring .a files above
+/TODO																# only ignore the TODO file in the current directory, not subdir/TODO
+build/																# ignore all files in the build/ directory
+doc/*.txt															# ignore doc/notes.txt, but not doc/server/arch.txt
+doc/**/*.pdf														# ignore all .pdf files in the doc/ directory and any of its subdirectories
+
+Others
+---------------------------------------------------------------------
+git ls-files														# show files being tracked
+git mv <old_file_path> <new_file_path>								# rename or move
+git add -A															# if rename or move using bash command mv, use git add -A to indicate a rename
+																	# git add -A adds all changes in the working tree including rename and delete
+git rm <file>														# remove a file
+
+# Log
+---------------------------------------------------------------------
+
+git log																		# show logs. top logs are more recent
+git log --oneline
+git log --all --decorate --oneline --graph
+git log -n 20 --decorate --oneline --graph
+git log --oneline -- <file>													# show log of one file
+git config --global alias.graph "log --all --decorate --oneline --graph"	# create Alias "graph" to show graph
+git help <verb>																# getting help
+man git-<verb>
+git checkout master															# Fix 'detached HEAD' state
+git checkout c6c8007 -- <file>												# Better checkout only a file, this way you will not go to 'detached HEAD' state
+git <verb> -h																# quick lookup a Git command
+git <verb> --help															# full help document 
+git gui																		# open gui
+git cherry-pick <commit sha1>...
+===============================================
+
+https://github.com/xinghua24/GitCommands
+
+
+
+
+it config --global user.name "muttalipkucuk"
+git config --global user.email muttalip@example.com
+git init
+git clone /path/to/repository
+git clone username@host:/path/to/repository
+git add *
+git add <file-name>
+git add . -p
+git commit -m "Some message"
+git push
+git push origin master
+git push origin <branch-name>
+git push origin :<branchname>
+git status
+git remote add origin <server>
+git remote -v
+git checkout <branchname>
+git checkout -b <branch-name>
+git checkout -- <filename>
+git branch
+git branch -d <branch-name>
+git pull
+git merge <branch-name>
+git fetch
+git fetch origin
+git diff
+git diff <source-branch> <target-branch>
+git tag 1.0.0 <commit-ID>
+git log
+git reset --hard origin/master
+git stash save "some message"
+git stash list
+git stash apply stash@{n}
+git diff --staged (or git diff --cached)
+git checkout HEAD -- my-file.txt

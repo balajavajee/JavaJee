@@ -1,0 +1,147 @@
+
+Reff:
+https://docker-curriculum.com/
+
+Docker management commands 							
+
+--------------------
+docker HELP!!!
+example:
+docker rmi --help
+--------------------
+docker --version									# gives Docker version info
+docker version										# Show the Docker version information
+docker run hello-world								# test your enviroment
+docker run -it ubuntu bash							# To run Ubuntu bash command
+docker dockerd										# Launch the Docker daemon
+docker info											# Display system-wide information
+docker inspect										# Return low-level information on a container or image
+
+
+Image commands										
+--------------------
+
+docker build										# Build an image from a Dockerfile
+docker build -t name								# creates Docker image with -t tag, so it has a friendly name
+docker build -t access-control C:\JAVA_WS\Microservices\access-control
+docker build -f Dockerfile.dev
+docker commit										# Create a new image from a container's changes
+docker history										# Show the history of an image
+docker history hello-world
+docker images										# List images
+docker import										# Import the contents from a tarball to create a filesystem image
+docker load											# Load an image from a tar archive or STDIN
+docker rmi 											# Remove one or more images
+docker rmi hello-world
+docker save											# Save images to a tar archive
+docker tag											# Tag an image into a repository
+docker tag b740f7e2ddb9 balachandrareddyn/microservices:discovery
+ 
+Container commands		                            
+--------------------
+
+docker cp											# Copy files/folders from a container to a HOSTDIR or to STDOUT
+docker create										# Create a new container
+docker diff											# Inspect changes on a container's filesystem
+docker events										# Get real time events from the server
+docker exec											# Run a command in a running container
+docker exec -it 5ca0b8e5e743 sh
+docker export										# Export a container's filesystem as a tar archive
+docker kill											# Kill a running container
+docker logs											# Fetch the logs of a container
+docker logs 5ca0b8e5e743
+docker pause										# Pause all processes within a container
+docker port											# List port mappings or a specific mapping for the container
+
+docker ps -a									 	# List containers
+docker rename										# Rename a container
+docker restart										# Restart a running container
+docker rm											# Remove one or more containers
+docker rm 7b3f99d12c53 7b3f99d12c54
+docker rm $(docker ps -a -q -f status=exited)
+docker run											# Run a command in a new container (run = create + start)
+docker run -p 8888:1000 access-control
+docker start										# Start one or more stopped containers
+docker stats										# Display a live stream of container(s) resource usage statistics
+docker stop											# Stop a running container
+docker top											# Display the running processes of a container
+docker unpause										# Unpause all processes within a container
+docker update										# Update configuration of one or more containers
+docker wait											# Block until a container stops, then print its exit code
+docker system prune									# stops all docker containers
+
+
+Hub and registry commands	
+--------------------                        
+
+docker login										# Register or log in to a Docker registry
+docker login --username=balachandrareddyn
+docker logout										# Log out from a Docker registry
+docker pull											# Pull an image or a repository from a Docker registry
+docker pull balachandrareddyn/microservices:discovery
+docker push											# Push an image or a repository to a Docker registry
+docker push balachandrareddyn/microservices
+docker search										# Search the Docker Hub for images
+
+Network and connectivity commands                    
+--------------------
+
+docker-machine ls									# lists docker machines
+docker-machine ip default							# find the IP that your docker instance is using
+docker network
+docker network ls
+docker network create --help
+docker network create --subnet 10.0.1.0/16 --gateway 10.0.1.1 --attachable --driver bridge net-one
+docker network create --subnet 10.0.2.0/16 --gateway 10.0.2.1 --attachable --driver bridge net-two
+docker network rm net-one
+docker network create --subnet 10.0.1.0/24 --gateway 10.0.1.1 --attachable --driver bridge net-one
+docker network create --subnet 10.0.2.0/24 --gateway 10.0.2.1 --attachable --driver bridge net-two
+
+Shared data volume commands	                         
+--------------------
+
+docker volume create								# Creates a new volume where containers can consume and store data
+docker volume inspect								# Display information about a volume
+docker volume ls									# Lists all the volumes Docker knows about
+docker volume rm									# Remove one or more volumes
+
+Swarm node commands			                        
+ 
+docker node promote									# Promote a node that is pending a promotion to manager
+docker node demote									# Demotes an existing manager so that it is no longer a manager
+docker node inspect									# Inspect a node in the swarm
+docker node update									# Update attributes for a node
+docker node ps										# List tasks running on a node
+docker node ls										# List nodes in the swarm
+docker node rm										# Remove one or more nodes from the swarm
+
+============================
+
+
+Examples:
+
+curl http://$(docker-machine ip default):4000 	- run link in to a web browser
+http://192.168.99.100:4000/
+
+docker build -t friendlyhello .  											# Create image using this directory's Dockerfile. Remember the period!
+docker build -t username/repositostopry:tag .								# Create image using this directory's Dockerfile with username and tag. Remember the period!
+docker run -dp 4000:5000 username/repositostopry:tag						# create container mapping port 4000 to 80 to specific tag
+docker run --name containerName -dp 4001:5000 username/repositostopry:tag 	# Create image with name based on image username/repositostopry with specofic tag and map ports. Detaeched mode on.
+docker run -p 4000:80 friendlyhello  										# create container "friendlyname" mapping port 4000 to 80
+docker run -d -p 4000:80 friendlyhello  									# Same thing, but in detached mode
+docker start <hash> or <friendlyName>           							# Gracefully start the specified container/processes
+docker stop <hash> or <friendlyName>            							# Gracefully stop the specified container/processes
+docker kill <hash> or <friendlyName>										# Force shutdown of the specified container/process
+docker rm <hash> or <friendlyName>              							# Remove the specified container from this machine
+docker rm $(docker ps -a -q)           										# Remove all containers from this machine
+docker rm -f <hash> or <friendlyname>										# Stops and Removes a running container
+docker images -a                        									# Show all images on this machine
+docker rmi -f <imagename>            										# FORCE to Remove the specified image from this machine
+docker rmi <imagename>            											# Remove the specified image from this machine
+docker rmi $(docker images -q)         										# Remove all images from this machine
+docker login             													# Log in this CLI session using your Docker credentials
+docker tag <image> username/repository:tag  								# Tag <image> for upload to registry
+docker push username/repository:tag     									# Upload tagged image to registry
+docker run username/repository:tag      									# Run image from a registry
+
+========================

@@ -1,0 +1,12 @@
+apiVersion: V1
+kind: Service
+metadata:
+  name: client-node-port
+spec:
+  type: NodePort
+  ports:
+    - ports: 
+      targetPort: 1112
+      nodePort:
+  selector:
+    component: discovery

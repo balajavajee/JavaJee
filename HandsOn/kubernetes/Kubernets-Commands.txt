@@ -1,0 +1,28 @@
+
+
+
+Kubernetes
+-------------------------------------------
+
+kubectl [command] [TYPE] [NAME] [flags]
+kubectl version
+kubectl cluster-info
+kubectl get
+kubectl get pods
+kubectl get pods -l label-name
+kubectl get deployments
+kubectl get nodes
+kubectl get services
+kubectl get services -l label-name
+kubectl proxy
+kubectl run node-name --image=link-to-image.com --port=8080
+kubectl describe
+kubectl logs
+kubectl exec 
+kubectl port-forward <service-name> <local-port> <pod-port>
+kubectl create -f ./secret.yaml
+kubectl delete secret name-of-secret
+kubectl config use-context name-of-cluster
+kubectl config get-contexts
+
+kubectl describe node the-name-of-the-node

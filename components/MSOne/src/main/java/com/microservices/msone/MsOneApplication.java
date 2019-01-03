@@ -1,5 +1,7 @@
 package com.microservices.msone;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -23,8 +25,10 @@ public class MsOneApplication {
 
 	@Autowired
 	private MSTwoServiceProxy msTwoServiceProxy;
-	
+	private static final Logger logger = LoggerFactory.getLogger(MsOneApplication.class);
+
 	public static void main(String[] args) {
+		logger.info(" IN MSFive application");
 		SpringApplication.run(MsOneApplication.class, args);
 	}
 
@@ -32,7 +36,7 @@ public class MsOneApplication {
 	public String greetingFromMSOne() {
 		return "Greetings from MSOne applications!";
 	}
-	
+
 	@RequestMapping("/greetingFromMSTwo")
 	public String greetingFromMSTwo() {
 		return msTwoServiceProxy.greetingFromMSTwo();

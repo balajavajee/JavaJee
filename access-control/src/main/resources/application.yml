@@ -1,0 +1,37 @@
+spring:
+  application:
+    name: access-control
+server:
+  port: 9001
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:1112/eureka}
+      
+#mongodb
+#spring.data.mongodb.host=localhost
+#spring.data.mongodb.port=27017
+#spring.data.mongodb.database=app1
+#Database
+spring.main.allow-bean-definition-overriding=true:
+rdbms.mysql.datasource.url=jdbc:mysql://localhost:3306/access_control_db?useSSL=false:
+rdbms.mysql.datasource.username=root:
+rdbms.mysql.datasource.password=root:
+rdbms.mysql.datasource.driver-class-name=com.mysql.jdbc.Driver:
+
+nosql.mongodb.datasource.url=jdbc:mysql://localhost:3306/access_control_db?useSSL=false:
+nosql.mongodb.datasource.username=root:
+nosql.mongodb.datasource.password=root:
+nosql.mongodb.datasource.driver-class-name=com.mysql.jdbc.Driver:
+
+## Spring DATASOURCE (DataSourceAutoConfiguration & DataSourceProperties)
+spring.datasource.driverClassName=com.mysql.jdbc.Driver:
+spring.datasource.url = jdbc:mysql://localhost:3306/access_control_db?useSSL=false:
+spring.datasource.username = root:
+spring.datasource.password = root:
+
+#logging
+#logging.level.org.springframework.data=debug
+#logging.level.=error
+logging:
+  file: /var/log/logs/access-control.log

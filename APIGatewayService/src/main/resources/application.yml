@@ -1,19 +1,57 @@
-# Configure this Discovery Server
-eureka:
-  instance:
-    hostname: localhost
-  client: 
-    registerWithEureka: false
-    fetchRegistry: false
-
+spring:
+  application:
+    name: APIGatewayService
+management:
+  restart:
+    enabled: true
+  shutdown:
+    enabled: true
+  health:
+    sensitive: false
 # HTTP (Tomcat) port
 server:
   port: 1111   
+ # Configure this Discovery Server
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: ${EUREKA_URI:http://localhost:1112/eureka}
 zuul:
+  #prefix: /api
   routes:
+    MSFive:
+      serviceId: MSFive
     MSFour:
-      url=http://localhost:8084
-ribbon:
-  eureka:
-    enabled=false
+      serviceId: MSFour
+    MSThree:
+      serviceId: MSThree
+    MSTwo:
+      serviceId: MSTwo
+    MSOne:
+      serviceId: MSOne
+  host:
+    connect-timeout-millis: 10000
+    socket-timeout-millis: 60000
+ #routes:    db-service:      path: /db-service/**    url: http://localhost:8300
+ #Ribbon is auto integrated with Zuul and for this exercise we are not using that.
+#ribbon.eureka.enabled=false
+      
+#zuul:routes:MSFour:url=http://localhost:8084
+#security.basic.enable: false   
+#management.security.enabled: false
+#ribbon:eureka:enabled=false
 
+
+#==================== sample configuration
+logging:
+  level:
+    ROOT: INFO
+    org.springframework.web: DEBUG         
+    
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 60000 

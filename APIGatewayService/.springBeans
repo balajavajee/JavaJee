@@ -7,7 +7,7 @@
 	</configSuffixes>
 	<enableImports><![CDATA[false]]></enableImports>
 	<configs>
-		<config>java:com.microservices.apigatewayserver.APIGatewayServiceApplication</config>
+		<config>java:com.bala.microservices.apigateway.APIGatewayServiceApplication</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>

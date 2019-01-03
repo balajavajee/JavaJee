@@ -1,0 +1,12 @@
+Design Principles
+=============================================================================
+Object Oriented Programming concepts 			# Abstraction, Encapsulation, Inheritance, Polymorphism, Interfaces, Different Member Field Attributes
+
+SOLID Principles 								# SRP, OCP, LSP, IS, DI  
+
+Design Patterns 								# Creational, Strectural, Behavieor, Integration and Anti Patterns
+
+Refactoring										# Compose Methods, Move Features between Objects, Organize Data, Generalization, Simplifying.
+
+Data Structure and Algorithms
+=============================================================================

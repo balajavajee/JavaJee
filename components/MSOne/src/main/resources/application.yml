@@ -16,3 +16,5 @@ eureka:
 #logging
 #logging.level.org.springframework.data=debug
 #logging.level.=error
+logging:
+  file: /var/log/logs/MSOne.log

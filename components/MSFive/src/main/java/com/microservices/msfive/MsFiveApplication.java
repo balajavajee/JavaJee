@@ -16,6 +16,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 @RefreshScope
 @EnableDiscoveryClient
@@ -28,8 +30,10 @@ public class MsFiveApplication {
 	private DiscoveryClient discoveryClient;
 	@Autowired
 	private MSOneServiceProxy msOneServiceProxy;
+	private static final Logger logger = LoggerFactory.getLogger(MsFiveApplication.class);
 
 	public static void main(String[] args) {
+		logger.info(" IN MSFive application");
 		SpringApplication.run(MsFiveApplication.class, args);
 	}
 
@@ -37,12 +41,12 @@ public class MsFiveApplication {
 	public List<ServiceInstance> serviceInstancesByApplicationName(@PathVariable String applicationName) {
 		return this.discoveryClient.getInstances(applicationName);
 	}
-	
+
 	@RequestMapping("/greetingFromMSFive")
-    public String greeting() {
-        return "Greetings from MSFive applications!";
-    }
-	
+	public String greeting() {
+		return "Greetings from MSFive applications!";
+	}
+
 	@RequestMapping("/greetingFromMSOne")
 	public String greetingFromMSOne() {
 		return msOneServiceProxy.greetingFromMSOne();

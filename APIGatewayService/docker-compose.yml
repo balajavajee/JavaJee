@@ -1,0 +1,32 @@
+eureka:
+  image: localhost:5000/otrs/eureka-service:0.0.1.SNAPSHOT
+  ports:
+    - 8761:8761
+
+users:
+  image: localhost:5000/otrs/user-service:0.0.1.SNAPSHOT
+  ports:
+    - 8101:8080
+  links:
+    - eureka
+
+restaurant:
+  image: localhost:5000/otrs/restaurant-service:0.0.1.SNAPSHOT
+  ports:
+    - 8102:8080
+  links:
+    - eureka
+
+zuul:
+  image: localhost:5000/otrs/zuul-service:0.0.1.SNAPSHOT
+  ports:
+    - 8103:8080
+  links:
+    - eureka
+
+api:
+  image: localhost:5000/otrs/api-service:0.0.1.SNAPSHOT
+  ports:
+    - 8104:8080
+  links:
+    - eureka

@@ -1,0 +1,67 @@
+{"properties": [
+  {
+    "name": "rdbms.mysql.datasource.url=jdbc:mysql://localhost:3306/access_control_db?use-sSL=false",
+    "type": "java.lang.String",
+    "description": "A description for 'rdbms.mysql.datasource.url=jdbc:mysql://localhost:3306/access_control_db?use-sSL=false'"
+  },
+  {
+    "name": "rdbms.mysql.datasource.username=root",
+    "type": "java.lang.String",
+    "description": "A description for 'rdbms.mysql.datasource.username=root'"
+  },
+  {
+    "name": "rdbms.mysql.datasource.password=root",
+    "type": "java.lang.String",
+    "description": "A description for 'rdbms.mysql.datasource.password=root'"
+  },
+  {
+    "name": "rdbms.mysql.datasource.driver-class-name=com.mysql.jdbc.-driver",
+    "type": "java.lang.String",
+    "description": "A description for 'rdbms.mysql.datasource.driver-class-name=com.mysql.jdbc.-driver'"
+  },
+  {
+    "name": "nosql.mongodb.datasource.url=jdbc:mysql://localhost:3306/access_control_db?use-sSL=false",
+    "type": "java.lang.String",
+    "description": "A description for 'nosql.mongodb.datasource.url=jdbc:mysql://localhost:3306/access_control_db?use-sSL=false'"
+  },
+  {
+    "name": "nosql.mongodb.datasource.username=root",
+    "type": "java.lang.String",
+    "description": "A description for 'nosql.mongodb.datasource.username=root'"
+  },
+  {
+    "name": "nosql.mongodb.datasource.password=root",
+    "type": "java.lang.String",
+    "description": "A description for 'nosql.mongodb.datasource.password=root'"
+  },
+  {
+    "name": "nosql.mongodb.datasource.driver-class-name=com.mysql.jdbc.-driver",
+    "type": "java.lang.String",
+    "description": "A description for 'nosql.mongodb.datasource.driver-class-name=com.mysql.jdbc.-driver'"
+  },
+  {
+    "name": "spring.datasource.driver-class-name=com.mysql.jdbc.-driver",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.driver-class-name=com.mysql.jdbc.-driver'"
+  },
+  {
+    "name": "spring.datasource.url = jdbc:mysql://localhost:3306/access_control_db?use-sSL=false",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.url = jdbc:mysql://localhost:3306/access_control_db?use-sSL=false'"
+  },
+  {
+    "name": "spring.datasource.username = root",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.username = root'"
+  },
+  {
+    "name": "spring.datasource.password = root",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.datasource.password = root'"
+  },
+  {
+    "name": "spring.main.allow-bean-definition-overriding=true",
+    "type": "java.lang.String",
+    "description": "A description for 'spring.main.allow-bean-definition-overriding=true'"
+  }
+]}
